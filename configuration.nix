@@ -16,9 +16,7 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  # Configure network connections interactively with nmcli or nmtui.
-
-  # Bluetooth 
+# Bluetooth 
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true; # optional, powers up on boot
@@ -32,7 +30,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
-  # services.getty.autologinUser = "florent";
 
   programs.hyprland = {
     enable= true;
@@ -42,34 +39,22 @@
 
   security.pam.services.hyprlock = {};
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+console.keyMap = "fr";
+services.xserver.enable = true;
+services.xserver.xkb.layout = "fr";
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
+services.displayManager.sddm = {
+  enable = true;
+  wayland.enable = true;
+};
 
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # services.pulseaudio.enable = true;
+# Enable sound.
+ #services.pulseaudio.enable = true;
   # OR
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput = {
-  enable = true;
   };
 
 # Sleep when close screen

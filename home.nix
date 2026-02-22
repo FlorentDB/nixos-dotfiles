@@ -38,9 +38,9 @@ in
       PS1='\[\e[38;5;76m\]\u\[\e[0m\] in  \[\e[38;5;32m\]\w\[\e[0m\] \\$ '
     '';
     profileExtra = ''
-      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        exec uwsm start -S hyprland-uwsm.desktop
-      fi
+	    if uwsm check may-start; then
+    exec uwsm start hyprland.desktop  
+    fi
     '';
   };
 
