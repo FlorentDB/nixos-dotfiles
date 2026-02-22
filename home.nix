@@ -1,0 +1,87 @@
+{ config, pkgs, ... }:
+let
+  dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
+  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+  configs = {
+    hypr = "hypr";
+    waybar = "waybar";
+    foot = "foot";
+    wofi = "wofi";
+    qtile = "qtile";
+    nvim = "nvim";
+    fastfetch = "fastfetch";
+  };
+in
+{
+  home.username = "florent";
+  home.homeDirectory = "/home/florent";
+  home.stateVersion = "25.05";
+
+  # Cursor
+  home.pointerCursor = {
+    name = "volantes_cursors";
+    package = pkgs.volantes-cursors;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      pipi = "echo le caca il a fait pipi";
+      snrs = "sudo nixos-rebuild switch";
+      nrs = "nixos-rebuild switch";
+      vim = "nvim";
+    };
+    initExtra = ''
+      PS1='\[\e[38;5;76m\]\u\[\e[0m\] in  \[\e[38;5;32m\]\w\[\e[0m\] \\$ '
+    '';
+    profileExtra = ''
+      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+        exec uwsm start -S hyprland-uwsm.desktop
+      fi
+    '';
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window.opacity = 0.9;
+      font.normal = {
+        family = "JetBrains Mono";
+        style = "Regular";
+      };
+      font.size = 10;
+    };
+  };
+
+  services.hypridle.enable = true;
+  services.hyprsunset.enable = true;
+  services.blueman-applet.enable = true;
+  services.network-manager-applet.enable = true;
+
+  home.file.".config/bat/config".text = ''
+    --theme="Nord"
+    --style="numbers,changes,grid"
+    --paging=auto
+  '';
+
+  home.packages = with pkgs; [
+    bat
+    hyprlock
+    neovim
+    (writeShellScriptBin "screenshot" ''
+      FILE=~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png
+      mkdir -p ~/Pictures/Screenshots
+      grim -g "$(slurp)" "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot" "Copié dans le presse-papier"
+    '')
+  ];
+
+  xdg.configFile = builtins.mapAttrs
+    (name: subpath: {
+      source = create_symlink "${dotfiles}/${subpath}";
+      recursive = true;
+    })
+    configs;
+}
