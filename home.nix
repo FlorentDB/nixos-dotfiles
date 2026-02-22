@@ -5,11 +5,12 @@ let
   configs = {
     hypr = "hypr";
     waybar = "waybar";
-    foot = "foot";
     wofi = "wofi";
+    kitty = "kitty";
     qtile = "qtile";
     nvim = "nvim";
     fastfetch = "fastfetch";
+
   };
 in
 {
