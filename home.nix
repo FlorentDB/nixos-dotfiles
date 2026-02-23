@@ -36,7 +36,7 @@ in
     snrs = "sudo nixos-rebuild switch";   
     snrsf = "sudo nixos-rebuild switch --flake .#";
     vim = "nvim";
-    hms = "home-manager switch"; 
+    kk = "kitty +kitten";
     };
 
   oh-my-zsh = {
