@@ -118,6 +118,8 @@ fonts.packages = with pkgs; [
   # List services that you want to enable:
   
   virtualisation.docker.enable = true;
+
+  services.tailscale.enable = true;
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
