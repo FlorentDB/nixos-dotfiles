@@ -36,12 +36,12 @@ in
     snrs = "sudo nixos-rebuild switch";   
     snrsf = "sudo nixxos-rebuild switch --flake .#";
     vim = "nvim";
-    hms = "home-manager switch";  # bonus pratique
-  };
+    hms = "home-manager switch"; 
+    };
 
   oh-my-zsh = {
     enable = true;
-    theme = "robbyrussell";  # simple et propre, change à ta guise
+    theme = "daveverwer";
     plugins = [ "git" "sudo" "z" ];
   };
 
