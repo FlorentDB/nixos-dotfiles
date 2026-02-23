@@ -41,15 +41,6 @@
 
   programs.zsh.enable = true;
 
-users.users.florent = {
-  isNormalUser = true;
-  shell = pkgs.zsh;  # ← ajoute juste cette ligne
-  extraGroups = [ "wheel" "networkmanager" "input" "docker" ];
-  packages = with pkgs; [
-    tree
-  ];
-};
-
 console.keyMap = "fr";
 services.xserver.enable = true;
 services.xserver.xkb.layout = "fr";
