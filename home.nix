@@ -34,7 +34,7 @@ in
     pipi = "echo le caca il a fait pipi";
     nrs = "nixos-rebuild switch";
     snrs = "sudo nixos-rebuild switch";   
-    snrsf = "sudo nixxos-rebuild switch --flake .#";
+    snrsf = "sudo nixos-rebuild switch --flake .#";
     vim = "nvim";
     hms = "home-manager switch"; 
     };
