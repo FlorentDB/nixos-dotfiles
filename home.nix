@@ -27,23 +27,37 @@ in
     x11.enable = true;
   };
 
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      pipi = "echo le caca il a fait pipi";
-      snrs = "sudo nixos-rebuild switch";
-      nrs = "nixos-rebuild switch";
-      vim = "nvim";
-    };
-    initExtra = ''
-      PS1='\[\e[38;5;76m\]\u\[\e[0m\] in  \[\e[38;5;32m\]\w\[\e[0m\] \\$ '
-    '';
-    profileExtra = ''
-	    if uwsm check may-start; then
-    exec uwsm start hyprland.desktop  
-    fi
-    '';
+  programs.zsh = {
+  enable = true;
+
+  shellAliases = {
+    pipi = "echo le caca il a fait pipi";
+    nrs = "nixos-rebuild switch";
+    snrs = "sudo nixos-rebuild switch";   
+    snrsf = "sudo nixxos-rebuild switch --flake .#";
+    vim = "nvim";
+    hms = "home-manager switch";  # bonus pratique
   };
+
+  oh-my-zsh = {
+    enable = true;
+    theme = "robbyrussell";  # simple et propre, change à ta guise
+    plugins = [ "git" "sudo" "z" ];
+  };
+
+  initExtra = ''
+    #  customisations zsh  
+    export EDITOR="nvim"
+    export PATH="$HOME/.local/bin:$PATH"
+    '';
+
+  # Equivalent du profileExtra bash → lancé au login
+  loginExtra = ''
+    if uwsm check may-start; then
+      exec uwsm start hyprland.desktop
+    fi
+  '';
+};
 
   programs.alacritty = {
     enable = true;

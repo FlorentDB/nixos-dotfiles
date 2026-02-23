@@ -39,6 +39,17 @@
 
   security.pam.services.hyprlock = {};
 
+  programs.zsh.enable = true;
+
+users.users.florent = {
+  isNormalUser = true;
+  shell = pkgs.zsh;  # ← ajoute juste cette ligne
+  extraGroups = [ "wheel" "networkmanager" "input" "docker" ];
+  packages = with pkgs; [
+    tree
+  ];
+};
+
 console.keyMap = "fr";
 services.xserver.enable = true;
 services.xserver.xkb.layout = "fr";
@@ -65,6 +76,7 @@ services.logind = {
 
 # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.florent = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "input" "docker"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
