@@ -45,7 +45,7 @@ in
     plugins = [ "git" "sudo" "z" ];
   };
 
-  initExtra = ''
+  initContent = ''
     #  customisations zsh  
     export EDITOR="nvim"
     export PATH="$HOME/.local/bin:$PATH"
