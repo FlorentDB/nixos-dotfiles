@@ -91,6 +91,7 @@ in
       mkdir -p ~/Pictures/Screenshots
       grim -g "$(slurp)" "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot" "Copié dans le presse-papier"
     '')
+    uv
   ];
 
   xdg.configFile = builtins.mapAttrs
