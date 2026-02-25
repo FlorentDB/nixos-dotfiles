@@ -8,12 +8,18 @@ let
     wofi = "wofi";
     kitty = "kitty";
     qtile = "qtile";
-    nvim = "neovim/nvim";
+    # nvim = "neovim/nvim";
     fastfetch = "fastfetch";
 
   };
 in
 {
+    imports = [ 
+	./config/neovim/neovim.nix  
+    ];
+    
+    neovim.enable = true;
+
   home.username = "florent";
   home.homeDirectory = "/home/florent";
   home.stateVersion = "25.05";
@@ -85,7 +91,6 @@ in
   home.packages = with pkgs; [
     bat
     hyprlock
-    neovim
     (writeShellScriptBin "screenshot" ''
       FILE=~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png
       mkdir -p ~/Pictures/Screenshots

@@ -22,11 +22,6 @@ in
       ## LSPs
 
       # Python LSP
-      python312Packages.mypy
-      python312Packages.python-lsp-ruff
-      python312Packages.rope
-      python312Packages.yapf
-      python312Packages.python-lsp-server
       pyright
       ruff
 
