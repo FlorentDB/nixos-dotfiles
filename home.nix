@@ -92,6 +92,7 @@ in
       grim -g "$(slurp)" "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot" "Copié dans le presse-papier"
     '')
     uv
+    ripgrep
   ];
 
   xdg.configFile = builtins.mapAttrs
