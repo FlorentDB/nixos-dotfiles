@@ -8,7 +8,7 @@ let
     wofi = "wofi";
     kitty = "kitty";
     qtile = "qtile";
-    nvim = "nvim";
+    nvim = "neovim/nvim";
     fastfetch = "fastfetch";
 
   };
