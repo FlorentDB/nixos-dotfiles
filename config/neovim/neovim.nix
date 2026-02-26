@@ -85,6 +85,7 @@ in
 
 	# colorscheme
         oxocarbon-nvim
+	gruvbox-nvim
 
 	 ];
     };
