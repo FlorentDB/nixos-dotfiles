@@ -40,22 +40,18 @@ in
       rustfmt
 
       ];
-    xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nvimPath}/lua";
+    xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
     programs.neovim = {
       enable = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
-      extraLuaConfig = ''
-        ${builtins.readFile ./nvim/init.lua}
-      '';
-      plugins = with pkgs.vimPlugins; [
+	plugins = with pkgs.vimPlugins; [
         # Telescope
         telescope-nvim
         telescope-fzf-native-nvim
 
         # Highlighting
-        nvim-treesitter
         nvim-treesitter.withAllGrammars
 
         # Folder structure pane
