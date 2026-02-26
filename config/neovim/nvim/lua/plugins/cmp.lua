@@ -65,12 +65,14 @@ cmp.setup.cmdline(':', {
 })
 
 -- LSP
+-- LSP
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
 
-lspconfig.pyright.setup({ capabilities = capabilities })
-lspconfig.ruff.setup({ capabilities = capabilities })
-lspconfig.lua_ls.setup({ capabilities = capabilities })
-lspconfig.yamlls.setup({ capabilities = capabilities })
-lspconfig.nil_ls.setup({ capabilities = capabilities })
-lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+vim.lsp.config('pyright', { capabilities = capabilities })
+vim.lsp.config('ruff', { capabilities = capabilities })
+vim.lsp.config('lua_ls', { capabilities = capabilities })
+vim.lsp.config('yamlls', { capabilities = capabilities })
+vim.lsp.config('nil_ls', { capabilities = capabilities })
+vim.lsp.config('rust_analyzer', { capabilities = capabilities })
+
+vim.lsp.enable({ 'pyright', 'ruff', 'lua_ls', 'yamlls', 'nil_ls', 'rust_analyzer' })
