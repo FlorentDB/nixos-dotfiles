@@ -98,6 +98,8 @@ in
     '')
     uv
     ripgrep
+    imagemagick
+    nh
   ];
 
   xdg.configFile = builtins.mapAttrs
