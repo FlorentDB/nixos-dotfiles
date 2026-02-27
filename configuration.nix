@@ -22,6 +22,9 @@
   hardware.bluetooth.powerOnBoot = true; # optional, powers up on boot
   services.blueman.enable = true; # optional GUI manager
 
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
   # Flakes enabling
   nix.settings.experimental-features = [ "nix-command" "flakes"];	
 
