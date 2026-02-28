@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -15,7 +15,8 @@ let
 in
 {
     imports = [ 
-	./config/neovim/neovim.nix  
+	./config/neovim/neovim.nix 
+	./noctalia.nix
     ];
     
     neovim.enable = true;

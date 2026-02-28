@@ -1,6 +1,5 @@
 { pkgs, inputs, ... }:
 {
-  home-manager.users.drfoobar = {
     # import the home manager module
     imports = [
       inputs.noctalia.homeModules.default
@@ -53,7 +52,7 @@
         };
         colorSchemes.predefinedScheme = "Monochrome";
         general = {
-          avatarImage = "/home/drfoobar/.face";
+          avatarImage = "/home/florent/.face";
           radiusRatio = 0.2;
         };
         location = {
@@ -63,5 +62,4 @@
       };
       # this may also be a string or a path to a JSON file.
     };
-  };
 }
