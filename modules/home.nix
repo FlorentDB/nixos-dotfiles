@@ -15,7 +15,7 @@ let
 in
 {
     imports = [ 
-	./config/neovim/neovim.nix 
+	./neovim.nix 
 	./noctalia.nix
     ];
     
