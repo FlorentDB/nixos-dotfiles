@@ -5,9 +5,9 @@
     ...
 }:
 
-let
-  nvimPath = "${config.home.homeDirectory}/nixos-dotfiles/config/neovim/nvim";
-in
+#let
+#  nvimPath = "${config.home.homeDirectory}/nixos-dotfiles/config/neovim/nvim";
+#in
 {
   options = {
     neovim.enable = lib.mkEnableOption "enables Neovim";
@@ -39,8 +39,10 @@ in
       rust-analyzer
       rustfmt
 
+      # correction de texte
+      ltex-ls
       ];
-    xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
+    # xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
     programs.neovim = {
       enable = true;
       viAlias = true;

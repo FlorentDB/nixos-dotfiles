@@ -95,6 +95,7 @@ services.logind = {
     kitty
     discord
     
+    libreoffice
     swayosd
     # Applications pour Hyprland (Wayland)
     kdePackages.dolphin

@@ -8,7 +8,7 @@ let
     wofi = "wofi";
     kitty = "kitty";
     qtile = "qtile";
-    # nvim = "neovim/nvim";
+    nvim = "neovim/nvim";
     fastfetch = "fastfetch";
 
   };
@@ -101,6 +101,7 @@ in
     ripgrep
     imagemagick
     nh
+    obsidian
   ];
 
   xdg.configFile = builtins.mapAttrs

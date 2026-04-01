@@ -8,4 +8,4 @@ require('plugins.treesitter')
 require('plugins.colors')
 require('plugins.luasnip')
 require('plugins.cmp')
-
+require('plugins.lsp')
