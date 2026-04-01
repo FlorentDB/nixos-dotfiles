@@ -8,7 +8,7 @@ let
     wofi = "wofi";
     kitty = "kitty";
     qtile = "qtile";
-    nvim = "neovim/nvim";
+#    nvim = "neovim/nvim";
     fastfetch = "fastfetch";
 
   };
@@ -102,6 +102,8 @@ in
     imagemagick
     nh
     obsidian
+    vlc
+    yt-dlp
   ];
 
   xdg.configFile = builtins.mapAttrs

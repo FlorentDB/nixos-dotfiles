@@ -5,9 +5,9 @@
     ...
 }:
 
-#let
-#  nvimPath = "${config.home.homeDirectory}/nixos-dotfiles/config/neovim/nvim";
-#in
+let
+  nvimPath = "${config.home.homeDirectory}/nixos-dotfiles/config/neovim/nvim";
+in
 {
   options = {
     neovim.enable = lib.mkEnableOption "enables Neovim";
@@ -42,12 +42,13 @@
       # correction de texte
       ltex-ls
       ];
-    # xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
+      xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nvimPath}/lua";
     programs.neovim = {
       enable = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+    initLua = builtins.readFile ../config/neovim/nvim/init.lua;	
 	plugins = with pkgs.vimPlugins; [
         # Telescope
         telescope-nvim
