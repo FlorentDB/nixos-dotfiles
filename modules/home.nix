@@ -102,7 +102,7 @@ in
     imagemagick
     nh
     obsidian
-    vlc
+    mpv
     yt-dlp
   ];
 
