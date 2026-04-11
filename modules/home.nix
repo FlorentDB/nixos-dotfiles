@@ -65,7 +65,11 @@ in
     fi
   '';
 };
-
+    home.sessionVariables = {
+	UV_PYTHON = "${pkgs.python313.withPackages (ps: [ ps.tkinter ])}/bin/python3";
+	UV_PYTHON_PREFERENCE = "only-system";  # empêche uv de télécharger son propre Python
+	UV_PYTHON_DOWNLOADS = "never";         # vraiment jamais
+    };
   programs.alacritty = {
     enable = true;
     settings = {
@@ -98,6 +102,7 @@ in
       grim -g "$(slurp)" "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot" "Copié dans le presse-papier"
     '')
     uv
+    (pkgs.python313.withPackages (ps: [ ps.tkinter ]))
     ripgrep
     imagemagick
     nh
@@ -105,6 +110,7 @@ in
     mpv
     yt-dlp
   ];
+
 
   xdg.configFile = builtins.mapAttrs
     (name: subpath: {
