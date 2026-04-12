@@ -67,10 +67,12 @@ in
 };
     home.sessionVariables = {
 	UV_PYTHON = "${pkgs.python313.withPackages (ps: [ ps.tkinter ])}/bin/python3";
-	UV_PYTHON_PREFERENCE = "only-system";  # empêche uv de télécharger son propre Python
-	UV_PYTHON_DOWNLOADS = "never";         # vraiment jamais
-    };
-  programs.alacritty = {
+	LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+    pkgs.zlib
+    pkgs.stdenv.cc.cc.lib
+      ];
+};
+programs.alacritty = {
     enable = true;
     settings = {
       window.opacity = 0.9;
@@ -102,7 +104,8 @@ in
       grim -g "$(slurp)" "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot" "Copié dans le presse-papier"
     '')
     uv
-    (pkgs.python313.withPackages (ps: [ ps.tkinter ]))
+    tk
+    (python313.withPackages (ps: [ ps.tkinter ]))
     ripgrep
     imagemagick
     nh
