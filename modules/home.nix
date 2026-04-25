@@ -112,6 +112,8 @@ programs.alacritty = {
     obsidian
     mpv
     yt-dlp
+    calibre
+    dexed
   ];
 
 
