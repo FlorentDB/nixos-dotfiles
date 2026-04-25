@@ -116,7 +116,12 @@ programs.alacritty = {
     calibre
     dexed
   ];
-
+xdg.desktopEntries.dexed = {
+  name = "Dexed";
+  exec = "Dexed";
+  comment = "DX7 FM Synthesizer";
+  categories = [ "Audio" "Music" ];
+};
 
   xdg.configFile = builtins.mapAttrs
     (name: subpath: {
