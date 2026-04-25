@@ -44,6 +44,7 @@ in
     snrsf = "sudo nixos-rebuild switch --flake .#";
     vim = "nvim";
     kk = "kitty +kitten";
+    dexed = "Dexed";
     };
 
   oh-my-zsh = {
