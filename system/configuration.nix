@@ -59,8 +59,24 @@ services.displayManager.sddm = {
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
+  services.pipewire.extraConfig.pipewire."92-low-latency" = {
+  "context.properties" = {
+    "default.clock.rate" = 48000;
+    "default.clock.quantum" = 32;
+    "default.clock.min-quantum" = 32;
+    "default.clock.max-quantum" = 32;
+  };
+};
+
+boot.kernelParams = [
+  "threadirqs"
+  "usbcore.autosuspend=-1"
+];
 
 # Sleep when close screen
 services.logind = {
@@ -72,7 +88,7 @@ services.logind = {
   users.users.florent = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "input" "docker"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "input" "docker" "audio"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];

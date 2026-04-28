@@ -44,7 +44,6 @@ in
     snrsf = "sudo nixos-rebuild switch --flake .#";
     vim = "nvim";
     kk = "kitty +kitten";
-    dexed = "Dexed";
     };
 
   oh-my-zsh = {
@@ -114,11 +113,16 @@ programs.alacritty = {
     mpv
     yt-dlp
     calibre
-    dexed
-  ];
+    reaper
+    (writeShellScriptBin "dexed" ''
+  exec env PIPEWIRE_RUNTIME_DIR=/run/user/1000 ${pkgs.pipewire.jack}/bin/pw-jack ${pkgs.dexed}/bin/Dexed "$@"
+'')
+x42-plugins
+];
+
 xdg.desktopEntries.dexed = {
   name = "Dexed";
-  exec = "Dexed";
+  exec = "dexed";
   comment = "DX7 FM Synthesizer";
   categories = [ "Audio" "Music" ];
 };
