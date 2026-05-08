@@ -86,7 +86,6 @@ programs.alacritty = {
 
   services.hypridle.enable = true;
   services.hyprsunset.enable = true;
-  services.blueman-applet.enable = true;
   services.network-manager-applet.enable = true;
 
   home.file.".config/bat/config".text = ''
@@ -118,6 +117,7 @@ programs.alacritty = {
   exec env PIPEWIRE_RUNTIME_DIR=/run/user/1000 ${pkgs.pipewire.jack}/bin/pw-jack ${pkgs.dexed}/bin/Dexed "$@"
 '')
 x42-plugins
+zotero
 ];
 
 xdg.desktopEntries.dexed = {
