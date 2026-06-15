@@ -102,6 +102,7 @@ programs.alacritty = {
       mkdir -p ~/Pictures/Screenshots
       grim -g "$(slurp)" "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot" "Copié dans le presse-papier"
     '')
+    direnv
     uv
     tk
     (python313.withPackages (ps: [ ps.tkinter ]))
@@ -118,6 +119,8 @@ programs.alacritty = {
 '')
 x42-plugins
 zotero
+ffmpeg
+stremio-linux-shell
 ];
 
 xdg.desktopEntries.dexed = {
